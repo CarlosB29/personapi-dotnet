@@ -1,0 +1,26 @@
+-- Insertar datos de ejemplo en la tabla persona
+INSERT INTO persona (cc, nombre, apellido, genero, edad) VALUES
+(1, 'Juan', 'Perez', 'M', 30),
+(2, 'Maria', 'Gomez', 'F', 25),
+(3, 'Pedro', 'Rodriguez', 'M', 40);
+GO
+
+-- Insertar datos de ejemplo en la tabla profesion
+INSERT INTO profesion (id, nom, des) VALUES
+(1, 'Ingeniero', 'Ingeniero de sistemas'),
+(2, 'Abogado', 'Especializado en derecho civil');
+GO
+
+-- Insertar datos de ejemplo en la tabla estudios
+INSERT INTO estudios (id_prof, cc_per, fecha, univer) VALUES
+(1, 1, '2020-01-01', 'Universidad Nacional'),
+(1, 2, '2018-01-01', 'Universidad de Los Andes'),
+(2, 3, '2015-01-01', 'Universidad Javeriana');
+GO
+
+-- Insertar datos de ejemplo en la tabla telefono
+INSERT INTO telefono (num, oper, duenio) VALUES
+('1234567890', 'Movistar', 1),
+('9876543210', 'Claro', 2),
+('5555555555', 'Tigo', 3);
+GO

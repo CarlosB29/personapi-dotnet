@@ -1,0 +1,51 @@
+-- Schema arq_per_db
+IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'arq_per_db')
+BEGIN
+    EXEC('CREATE SCHEMA arq_per_db')
+END
+GO
+
+USE arq_per_db;
+GO
+
+-- Table persona
+CREATE TABLE persona (
+    cc INT NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    apellido VARCHAR(45) NOT NULL,
+    genero CHAR(1) NOT NULL,
+    edad INT NULL,
+    PRIMARY KEY (cc)
+);
+GO
+
+-- Table profesion
+CREATE TABLE profesion (
+    id INT NOT NULL,
+    nom VARCHAR(90) NOT NULL,
+    des TEXT NULL,
+    PRIMARY KEY (id)
+);
+GO
+
+-- Table estudios
+CREATE TABLE estudios (
+    id_prof INT NOT NULL,
+    cc_per INT NOT NULL,
+    fecha DATE NULL,
+    univer VARCHAR(50) NULL,
+    PRIMARY KEY (id_prof, cc_per),
+    CONSTRAINT fk_estudios_persona FOREIGN KEY (cc_per) REFERENCES persona (cc),
+    CONSTRAINT fk_estudios_profesion FOREIGN KEY (id_prof) REFERENCES profesion (id)
+);
+GO
+
+-- Table telefono
+CREATE TABLE telefono (
+    num VARCHAR(15) NOT NULL,
+    oper VARCHAR(45) NOT NULL,
+    duenio INT NOT NULL,
+    PRIMARY KEY (num),
+    CONSTRAINT fk_telefono_persona FOREIGN KEY (duenio) REFERENCES persona (cc)
+);
+GO
